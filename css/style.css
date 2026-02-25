@@ -1,0 +1,30 @@
+:root {
+   --text-color: #ff00ff;
+   --bg-color: black;
+   --accent-color: cyan;
+   --font-title: "bd-orange-variable", sans-serif;
+   --font-text: "gotti-variable", sans-serif;
+}
+
+body {
+   background-color: var(--bg-color);
+   color: var(--text-color);
+   font-family: var(--font-text);
+   font-variation-settings: "wght" 150;
+   font-size: 2rem; /* cambio global
+   */
+}
+
+h1, h2, h3, h4{
+   font-family: var(--font-title);
+   font-variation-settings: "wght" 800;
+}
+h1 {
+   font-size: 4em;
+}
+h2 {
+   font-size: 3em;
+}
+h3 {
+   font-size: 2em;
+}
