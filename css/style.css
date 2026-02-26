@@ -1,9 +1,9 @@
 :root {
-   --text-color: #ff00ff;
-   --bg-color: black;
-   --accent-color: cyan;
+   --text-color: #000000;
+   --bg-color: rgb(214, 2, 2);
+   --accent-color: rgb(255, 221, 0);
    --font-title: "bd-orange-variable", sans-serif;
-   --font-text: "gotti-variable", sans-serif;
+   --font-text: "roboto-flex", sans-serif;
 }
 
 body {
@@ -14,14 +14,23 @@ body {
    font-size: 2rem; /* cambio global */
    
 }
-main {
+main, header, footer{
    width: 100%;
    max-width: 960px;
    margin: 0; 
+   padding: 0 2em;
+   border: 2px solid var(--accent-color);
 }
 h1, h2, h3, h4{
    font-family: var(--font-title);
    font-variation-settings: "wght" 700;
+}
+a {
+   transition: all 120ms ease;
+   font-variation-settings: 'opsz' 8, 'wght' 363, 'GRAD' 0, 'wdth' 118, 'slnt' 0, 'XOPQ' 96, 'YOPQ' 79, 'XTRA' 468, 'YTUC' 712, 'YTLC' 514, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+a:hover {
+   font-variation-settings: 'opsz' 8, 'wght' 300, 'GRAD' 0, 'wdth' 100, 'slnt' 0, 'XOPQ' 96, 'YOPQ' 79, 'XTRA' 468, 'YTUC' 712, 'YTLC' 514, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
 h1 {
    font-size: 4em;
