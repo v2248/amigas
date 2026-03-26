@@ -1,25 +1,38 @@
+
+@font-face {
+   font-family: "ABC";
+   src: url("ABCFavoritExpandedVariable-Trial.ttf") format("truetype");
+   font-weight: 400;
+   font-style: normal;
+}
+
 :root {
-   --text-color: #ff7b00;
-   --bg-color: rgb(6, 129, 0);
-   --accent-color: rgba(0, 255, 225, 0.502);
-   --font-title: "bd-orange-variable", sans-serif;
-   --font-text: "roboto-flex", sans-serif;
+   --text-color: #ea5c1c;
+   --bg-color: #2e1b10;
+   --accent-color: #bacf18;
+   --font: "ABC", sans-serif;
+}
+
+* {
+   box-sizing: border-box;
 }
 
 body {
    background-color: var(--bg-color);
    color: var(--text-color);
-   font-family: var(--font-text);
    font-variation-settings: "wght" 150;
-   font-size: 2rem;
+   font-size: 1rem;
    /* cambio global */
-
+   font-family: var(--font);
 }
 
 /* El título permanece centrado; el resto del contenido
          estará en un contenedor centrado en la página y texto alineado a la izquierda */
 header h1 {
    text-align: center;
+   color: transparent;
+   position: relative;
+   margin: 0;
 }
 
 /* Centrar el contenedor en la página (vertical y horizontal) */
@@ -40,12 +53,25 @@ footer {
    margin: 0 auto;
    padding: 0 2em;
 }
+.hero-body main,
+.hero-body header {
+    max-width: none;
+    width: 100%;
+    padding: 0;
+}
 
+.hero-body p{
+   padding: 1em;
+   margin: 0;
+   font-size: 1em;
+   max-width: 50%;
+   margin: 0 10%;
+   min-width: 280px;
+}
 h1,
 h2,
 h3,
 h4 {
-   font-family: var(--font-title);
    font-variation-settings: "wght" 700;
 }
 
@@ -68,4 +94,26 @@ h2 {
 
 h3 {
    font-size: 2em;
+}
+
+img {
+   max-width: 100%;
+   position: relative;
+   left: 0;
+   top: 0;
+   width: 100%;
+}
+
+#hero-link img {
+   width: 20%;
+   min-width: 100px;
+   max-width: 150px;
+   position: relative;
+   margin: 1em auto;
+   display: block;
+}
+
+b {
+   color: #b9ce16;
+   font-weight: 900;
 }

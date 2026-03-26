@@ -10,12 +10,123 @@
 </head>
 
 <body>
-  <header>
-    <h1>AMIGAS</h1>
-    <p>Amigas es un proyecto que visibiliza la experiencia de las mujeres en el transporte público de la Ciudad de
-      México. A partir de la investigación, busca abrir conversación sobre la inseguridad, el acoso y las formas en que
-      las mujeres habitan y recorren estos espacios todos los días.</p>
-  </header>
+  <main>
+    <header>
+      <h1>AMIGAS <img src="./img" alt=""></h1>
+      </p>SOBRE EL PROYECTO</p>
+    </header>
+  </main>
+</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>movilidad</title>
+  <link rel="stylesheet" href="https://use.typekit.net/vrd6vuw.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ...existing code... */
+    .info-section {
+      margin: 3rem auto;
+      max-width: 900px;
+      padding: 0 1rem;
+      color: #bacf18;
+    }
+    .info-section h2 {
+      margin-bottom: 0.8rem;
+      font-size: 1.75rem;
+      line-height: 1.2;
+    }
+    .info-section p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #bacf18;
+    }
+    .cards-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    .info-card {
+      border: 1px solid #d8d8d8;
+      border-radius: 12px;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,.04);
+    }
+    .info-card h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.2rem;
+    }
+    .info-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #4f4f4f;
+    }
+    @media (min-width: 768px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (min-width: 1024px) {
+      .cards-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    /* ...existing code... */
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1>AMIGAS <img src="./img" alt=""></h1>
+      <p>Amigas es un proyecto que visibiliza la experiencia de las mujeres en el transporte público de la Ciudad de
+        México. A partir de la investigación, busca abrir conversación sobre la inseguridad, el acoso y las formas en que
+        las mujeres habitan y recorren estos espacios todos los días.</p>
+    </header>
+
+    <section id="estrategias" class="info-section">
+      <h2>Estrategia de talleres y movilidad segura</h2>
+      <p>Diseñamos un programa centrado en jóvenes de 13 a 17 años para fortalecer su seguridad en el metro y transporte público de la CDMX. A partir de las entrevistas con ellas y sus familias, construimos una propuesta clara, inclusiva y de acompañamiento colectivo.</p>
+
+      <div class="cards-grid">
+        <article class="info-card">
+          <h3>Base de la propuesta</h3>
+          <p>El proyecto se enfoca en:
+          <ul>
+            <li>Rutas más usadas por jóvenes (principalmente escolares).</li>
+            <li>Itinerarios en metro para moverse a la escuela.</li>
+            <li>Análisis de la experiencia real de viaje y puntos críticos.</li>
+          </ul>
+          </p>
+        </article>
+
+        <article class="info-card">
+          <h3>Objetivo principal</h3>
+          <ul>
+            <li>Crear espacios de voz y colectividad.</li>
+            <li>Fomentar independencia segura en movilidad.</li>
+            <li>Generar redes de acompañamiento entre chicas de la misma edad.</li>
+          </ul>
+        </article>
+
+        <article class="info-card">
+          <h3>Componentes de los talleres</h3>
+          <ul>
+            <li>Actividades de integración grupal.</li>
+            <li>Producción de carteles y stickers de lenguaje interno.</li>
+            <li>Uso de señalética como código de identificación en rutas.</li>
+            <li>Sesiones en espacio público y horarios escolares convenientes.</li>
+          </ul>
+        </article>
+      </div>
+
+      <p>La estrategia busca que el proyecto sea reconocido principalmente entre el público objetivo, desarrollando un sistema de cuidado y seguridad propio. La logística contempla espacios públicos y horarios acordes con las necesidades de las niñas y sus familias.</p>
+    </section>
+  </main>
 </body>
 
 </html>
