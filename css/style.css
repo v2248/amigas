@@ -32,7 +32,21 @@ body {
    font-size: 1rem;
    /* cambio global */
    font-family: var(--font);
+   padding: 0;
+   margin: 0;
+}
 
+#header-home {
+   background-color: var(--text-color);
+   width: 100%;
+   color: var(--bg-color);
+   margin: 0;
+   padding: 1em;
+}
+#header-home p {
+   margin: 0;
+   font-size: 1.5rem;
+   max-width: 640px;
 }
 
 h1, h2, h3 {
