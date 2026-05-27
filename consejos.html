@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/consejos.css">
 </head>
 
 <body class="hero-body">
@@ -15,7 +16,50 @@
         </nav>
     </header>
     <main>
-            <h2>Consejos</h2>       
+        <section id="consejo">
+            <header>
+                <h2>Consejos</h2>
+                <p>Escribe tu consejo, ayuda a tus amigas</p>
+            </header>
+            <form action="">
+                <fieldset>
+                    <label for="consejo">Tu consejo:</label>
+                    <textarea id="consejo" name="consejo" rows="4" cols="50"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria">
+                        <option value="rutas">Rutas</option>
+                        <option value="vestimenta">Vestimenta</option>
+                        <option value="vagones">Vagones</option>
+                    </select>
+                </fieldset>
+                <button type="submit">Enviar</button>
+            </form>
+            
+        </section>
+        <section id="consejos">
+            <header>
+                <h2>Consejos de otras amigas</h2>
+            </header>
+            <nav>
+                <a href="#rutas">Rutas</a>
+                <a href="#vestimenta">Vestimenta</a>
+                <a href="#vagones">Vagones</a>
+            </nav>
+            <ul>
+                <li class="consejo rutas">
+                    <p><strong>Amiga 1:</strong> Siempre lleva agua contigo, es importante mantenerse hidratada durante las rutas.</p>
+                </li>
+                <li class="consejo vestimenta">
+                    <p><strong>Amiga 2:</strong> No olvides llevar un mapa o usar una aplicación de navegación para no perderte.</p>
+                </li>
+                <li class="consejo vagones">
+                    <p><strong>Amiga 3:</strong> Usa ropa cómoda y adecuada para el clima, ¡y no olvides tu protector solar!</p>
+                </li>
+            </ul>
+        </section>
     </main>
 
 </body>
