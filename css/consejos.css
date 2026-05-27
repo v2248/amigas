@@ -12,16 +12,25 @@
 }
 
 form {
-    background: #000;
-    border: 1px solid #fff;
+    background: #bacf18;
+    border: 1px solid #bacf18;
+}
+:root {
+    --bg-color: var(--bg-color);
 }
 
 button {
-    background: #fff;
+    background: #bacf18;
     color: #000;
-    border: none;
+    border: 1px solid #bacf18;
     padding: 10px 20px;
     cursor: pointer;
+    font-family: var(--font);
+}
+
+button  :hover {
+    background: #000;
+    color: #fff;
 }
 
 #consejos ul {
@@ -29,3 +38,16 @@ button {
     padding: 0;
 }
 
+h4 {
+    font-family: var(--font-title);
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: 5rem;
+    align-items: center;
+}
+
+label {
+    font-family: var(--font);
+    font-size: 1.5rem;
+    color: var(--bg-color);
+}

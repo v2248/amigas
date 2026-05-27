@@ -15,7 +15,7 @@
 }
 :root {
    --text-color: #ea5c1c;
-   --bg-color: #2e1b10;
+   --background-color #312515
    --blue: #9ed2bc;
    --accent-color: #bacf18;
    --font: "ABC", sans-serif;
@@ -28,7 +28,7 @@
 
 body {
    background-color: var(--text-color);
-   color: var(--text-color);
+   text color #312515
    font-size: 1rem;
    /* cambio global */
    font-family: var(--font);
@@ -105,6 +105,8 @@ a {
    font-size: 2em;
    margin: 0 10px;
    text-transform: uppercase;
+   font-family: 'Camino';
+   align-items: center;
 }
 nav#nav-home a {
    text-decoration: none;
