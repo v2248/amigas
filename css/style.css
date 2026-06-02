@@ -15,7 +15,7 @@
 }
 :root {
    --text-color: #ea5c1c;
-   --background-color #312515
+   --background-color: #312515;
    --blue: #9ed2bc;
    --accent-color: #bacf18;
    --font: "ABC", sans-serif;
@@ -28,7 +28,7 @@
 
 body {
    background-color: var(--text-color);
-   text color #312515
+   color: var(--background-color);
    font-size: 1rem;
    /* cambio global */
    font-family: var(--font);
@@ -36,11 +36,17 @@ body {
    margin: 0;
 }
 body#nosotras-body {
-   background-color: var(--bg-color);
+   background-color: var(--background-color);
    color: var(--text-color);
 }
-
 body#nosotras-body #home-link {
+   color: var(--text-color);
+}
+body#consejos-body {
+   background-color: var(--background-color);
+   color: var(--text-color);
+}
+body#consejos-body #home-link {
    color: var(--text-color);
 }
 header {
@@ -53,14 +59,19 @@ header {
 #header-home {
    background-color: var(--text-color);
    width: 100%;
-   color: var(--bg-color);
+   color: var(--background-color);
    margin: 0;
    padding: 1em;
 }
 #header-home p {
    margin: 0;
-   font-size: 1.5rem;
-   max-width: 640px;
+   font-size: 1rem;
+   line-height: 1.1;
+   width: 100%;
+   max-width: none;
+   text-align: center;
+   white-space: nowrap;
+   overflow: visible;
 }
 
 h1, h2, h3 {
@@ -72,7 +83,7 @@ h1, h2, h3 {
 
 h1 {
    text-align: center;
-   color: var(--bg-color);
+   color: var(--background-color);
    position: relative;
    margin: 0;
    font-size: 24vw;
@@ -118,28 +129,28 @@ nav#nav-home a {
    font-variant-ligatures: none;
 }
 a#nosotras-link {
-   color: var(--bg-color);
+   color: var(--background-color);
 }
 a#nosotras-link:hover {
    color: var(--accent-color);
    font-variant-ligatures: discretionary-ligatures;
 }
 a#consejos-link {
-   color: var(--bg-color);
+   color: var(--background-color);
 }
 a#consejos-link:hover {
    color: var(--accent-color);
    font-variant-ligatures: discretionary-ligatures;
 }
 a#rutas-link {
-   color: var(--bg-color);
+   color: var(--background-color);
 }
 a#rutas-link:hover {
    color: var(--accent-color);
    font-variant-ligatures: discretionary-ligatures;
 }
 a#home-link {
-   color: var(--bg-color);
+   color: var(--background-color);
    font-size: 2rem;
    font-family: var(--font-title);
    text-transform: uppercase;
@@ -147,6 +158,52 @@ a#home-link {
 }
 a#home-link:hover {
    color: var(--accent-color);
+}
+/* Reusable hover class: same effect as footer menu links */
+.accent-hover {
+   color: var(--background-color);
+   transition: color 0.25s ease;
+}
+.accent-hover:hover {
+   color: var(--accent-color);
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+/* Type-only hover: only applies typographic variation, no color change */
+.type-hover {
+   color: inherit;
+   transition: font-variation-settings 0.25s ease, font-variant-ligatures 0.25s ease;
+}
+.type-hover:hover {
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+/* Top-right nav links: base + page-specific hover colors */
+.nav-link {
+   color: inherit;
+   text-decoration: none;
+   transition: color 0.25s ease;
+   font-family: var(--font-title);
+}
+.nav-link:hover {
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+/* Hover color per page */
+body#nosotras-body .nav-link:hover,
+body#consejos-body .nav-link:hover {
+   color: var(--text-color); /* naranja */
+}
+body#rutas-body .nav-link:hover {
+   color: var(--background-color); /* café */
+}
+
+/* Ensure the top-left home link (id=home-link) uses green on hover even if body rules set color */
+body#nosotras-body #home-link.accent-hover:hover,
+body#consejos-body #home-link.accent-hover:hover,
+body#rutas-body #home-link.accent-hover:hover {
+   color: var(--accent-color);
+   font-variant-ligatures: discretionary-ligatures;
 }
 section {
    padding: 3em;
