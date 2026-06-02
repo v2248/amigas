@@ -1,0 +1,74 @@
+Necesito corregir y reforzar los estilos hover de navegación del sitio.
+
+1. Botón “amigas” superior izquierdo en páginas internas
+
+En las páginas “nosotras” y “consejos”, el botón/link “amigas” de la esquina superior izquierda, que lleva al Home, todavía NO está cambiando de color en hover.
+
+Por favor arréglalo específicamente en:
+- /nosotras
+- /consejos
+
+El comportamiento correcto debe ser:
+
+- Al hacer hover sobre “amigas”, debe aplicar la variación tipográfica.
+- También debe cambiar al color verde del proyecto.
+- Debe funcionar igual que en las demás páginas donde ya esté correcto.
+- Asegúrate de que no haya estilos locales, clases específicas o reglas CSS con mayor prioridad que estén bloqueando el color hover.
+
+Revisa especialmente:
+- `:hover`
+- clases activas
+- estilos inline
+- especificidad CSS
+- si el link tiene una clase distinta en “nosotras” y “consejos”
+- si hay algún `color` fijo que está sobrescribiendo el hover
+
+2. Menú superior derecho de páginas internas
+
+En las páginas:
+- rutas
+- nosotras
+- consejos
+
+Hay un menú superior derecho con estas tres palabras:
+
+- rutas
+- nosotras
+- consejos
+
+Quiero que las tres palabras también tengan hover.
+
+El hover debe hacer dos cosas:
+
+- Cambiar a la variante tipográfica.
+- Cambiar de color.
+
+Color del hover:
+- En “nosotras” y “consejos”, el hover debe cambiar a color naranja.
+- En “rutas”, como el fondo ya es naranja, el hover debe cambiar a color café.
+
+Importante:
+- Esto debe aplicarse a las tres palabras del menú superior derecho.
+- Debe funcionar en las tres páginas internas.
+- Mantén el menú en la misma posición en las tres páginas.
+- Mantén el diseño actual, solo agrega/corrige el hover.
+- Si ya existe una clase de variación tipográfica para hover, reutilízala.
+- Si no existe, crea una clase global reutilizable para los links del menú superior derecho.
+
+3. Revisión final
+
+Por favor revisa que al final quede así:
+
+En /nosotras:
+- “amigas” superior izquierdo cambia a verde + variante tipográfica en hover.
+- Menú superior derecho cambia a naranja + variante tipográfica en hover.
+
+En /consejos:
+- “amigas” superior izquierdo cambia a verde + variante tipográfica en hover.
+- Menú superior derecho cambia a naranja + variante tipográfica en hover.
+
+En /rutas:
+- “amigas” superior izquierdo cambia a verde + variante tipográfica en hover.
+- Menú superior derecho cambia a café + variante tipográfica en hover.
+
+No modifiques estructura, textos ni estilos que no estén relacionados con estos hovers.

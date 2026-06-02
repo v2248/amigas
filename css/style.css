@@ -23,6 +23,7 @@
 }
 
 * {
+   font-style: var(--font);
    box-sizing: border-box;
 }
 
