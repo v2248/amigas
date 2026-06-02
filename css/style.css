@@ -43,6 +43,27 @@ body#nosotras-body {
 body#nosotras-body #home-link {
    color: var(--text-color);
 }
+
+/* Paragraph layout for Nosotras page: keep text left-aligned but add side gutters */
+body#nosotras-body main p {
+   margin-left: 220px;
+   margin-right: 220px;
+   text-align: left;
+}
+
+/* Ensure third paragraph keeps inherited color (remove previous blue) */
+body#nosotras-body main p:nth-of-type(3) {
+   color: inherit;
+}
+
+/* Fourth paragraph on Nosotras: centered, bold, and project blue color; keep side margins */
+body#nosotras-body main p:nth-of-type(4) {
+   text-align: center;
+   font-weight: 700;
+   color: var(--blue);
+   margin-left: 220px;
+   margin-right: 220px;
+}
 body#consejos-body {
    background-color: var(--background-color);
    color: var(--text-color);
@@ -105,10 +126,12 @@ nav {
 }
 nav#nav-home {
    margin-top: 1em;
-   float: right;
    width: 100%;
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem;
 }
 
 a {
@@ -126,7 +149,7 @@ nav#nav-home a {
    margin: 0 10px;
    text-transform: uppercase;
    font-family: var(--font-title);
-   display: block;
+   display: inline-block;
    font-variant-ligatures: none;
 }
 a#nosotras-link {
@@ -177,33 +200,120 @@ a#home-link:hover {
 }
 .type-hover:hover {
    font-variant-ligatures: discretionary-ligatures;
+   color: inherit;
 }
 
-/* Top-right nav links: base + page-specific hover colors */
-.nav-link {
-   color: inherit;
-   text-decoration: none;
-   transition: color 0.25s ease;
-   font-family: var(--font-title);
+/* Subtitle in header (Home) */
+.site-subtitle {
+   font-size: 1.2rem;
+   line-height: 1.05;
+   margin: 0 0 0.25rem 0;
+   text-align: center;
+   white-space: nowrap;
+   display: block;
 }
-.nav-link:hover {
+
+/* Stronger selector for Home subtitle to override #header-home p specificity */
+#header-home .home-subtitle {
+   font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+   line-height: 1.05;
+   margin: 0 0 0.12rem 0;
+   text-align: center;
+   white-space: nowrap;
+   display: block;
+}
+
+/* Center main title on consejos page */
+body#consejos-body h2 {
+   text-align: center;
+   margin: 0 auto 1rem auto;
+   display: block;
+}
+
+/* Spacing for the intro paragraphs and form on the consejos page */
+body#consejos-body .consejos-intro {
+   margin-bottom: 5px;
+}
+body#consejos-body .consejos-subtext {
+   margin-top: 0;
+   margin-bottom: 60px;
+}
+body#consejos-body .consejos-box {
+   margin-top: 0;
+}
+
+/* 'Consejos de otras amigas' section: center title and options; options use café color */
+body#consejos-body .consejos-otras-title {
+   text-align: center;
+   margin: 0 0 0.75rem 0;
+}
+body#consejos-body .consejos-otras-options {
+   /* ensure this nav doesn't inherit the global nav float and spans full width */
+   float: none !important;
+   width: 100% !important;
+   max-width: none;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem;
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+}
+body#consejos-body .consejos-otras-options a {
+   color: #312515;
+   text-decoration: none;
+   display: inline-block;
+}
+/* Hover for the options: change to project orange */
+body#consejos-body .consejos-otras-options a:hover {
+   color: var(--text-color);
    font-variant-ligatures: discretionary-ligatures;
 }
 
-/* Hover color per page */
-body#nosotras-body .nav-link:hover,
-body#consejos-body .nav-link:hover {
-   color: var(--text-color); /* naranja */
+/* Ensure the title's hover only applies typographic variation (no color change) */
+body#consejos-body .consejos-otras-title.type-hover:hover {
+   color: inherit;
 }
-body#rutas-body .nav-link:hover {
-   color: var(--background-color); /* café */
+
+/* Top-right nav links: base + page-specific hover colors */
+/* Top-right nav links - global class used in header nav */
+.top-nav-link {
+   color: var(--accent-color);
+   text-decoration: none;
+   transition: color 0.18s ease, font-variant-ligatures 0.18s ease;
+   font-family: var(--font-title);
+   font-variant-ligatures: none;
+}
+.top-nav-link:hover {
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+/* Hover color for top-right nav links: orange on hover on all internal pages */
+body#nosotras-body header nav a.top-nav-link:hover,
+body#consejos-body header nav a.top-nav-link:hover,
+body#rutas-body header nav a.top-nav-link:hover {
+   color: var(--text-color);
 }
 
 /* Ensure the top-left home link (id=home-link) uses green on hover even if body rules set color */
+/* routes page palette: cafe background, orange text */
+body#rutas-body {
+   background-color: var(--background-color);
+   color: var(--text-color);
+}
+body#rutas-body #home-link {
+   color: var(--text-color);
+}
+
+/* top-left home link hover: green in nosotras/consejos, keep orange (no color change) in rutas */
 body#nosotras-body #home-link.accent-hover:hover,
-body#consejos-body #home-link.accent-hover:hover,
-body#rutas-body #home-link.accent-hover:hover {
+body#consejos-body #home-link.accent-hover:hover {
    color: var(--accent-color);
+   font-variant-ligatures: discretionary-ligatures;
+}
+body#rutas-body #home-link.accent-hover:hover {
+   color: var(--text-color);
    font-variant-ligatures: discretionary-ligatures;
 }
 section {

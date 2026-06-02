@@ -11,22 +11,23 @@
     <header>
         <a href="./" id="home-link" class="accent-hover">Amigas</a>
         <nav>
-            <a href="./rutas.html" class="nav-link">Rutas</a>
-            <a href="./nosotras.html" class="nav-link">Nosotras</a>
-            <a href="./consejos.html" class="nav-link">Consejos</a>
+            <a href="./consejos.html" class="nav-link top-nav-link">Consejos</a>
+            <a href="./rutas.html" class="nav-link top-nav-link">Rutas</a>
+            <a href="./nosotras.html" class="nav-link top-nav-link">Nosotras</a>
         </nav>
     </header>
     <main>
         <section id="consejo">
             <header>
-                <h2>Consejos</h2>
+                <h2 class="type-hover">Consejos</h2>
             </header>
 
-            <p>Si tienes algun consejo que darle a una amiga, escribelo aquí.</p> <p>A todas nos hace falta ayuda alguna vez</p>
+            <p class="consejos-intro">Si tienes algun consejo que darle a una amiga, escribelo aquí.</p>
+            <p class="consejos-subtext">A todas nos hace falta ayuda alguna vez</p>
 
 
 
-            <form action="">
+            <form action="" class="consejos-box">
                 <fieldset>
                     <label for="consejo">Tu consejo:</label>
                     <textarea id="consejo" name="consejo" rows="4" cols="50"></textarea>
@@ -47,9 +48,9 @@
         </section>
         <section id="consejos">
             
-                <h4>Consejos de otras amigas</h4>
-            
-            <nav>
+                <h4 class="consejos-otras-title type-hover">Consejos de otras amigas</h4>
+
+            <nav class="consejos-otras-options">
                 <a href="#rutas">Rutas</a>
                 <a href="#vestimenta">Vestimenta</a>
                 <a href="#vagones">Vagones</a>
