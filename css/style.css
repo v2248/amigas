@@ -613,8 +613,9 @@ p {
    background-color: #ea5c1c;
    width: 100%;
    margin-top: 2rem;
-   padding: 0.9rem 1rem; /* symmetric vertical padding for balance */
+   padding: 0.6rem 1rem; /* compact vertical padding */
    box-sizing: border-box;
+   min-height: 3.2rem; /* ensure enough room to separate top and bottom items */
 }
 
 #site-footer .footer-content {
@@ -674,8 +675,8 @@ p {
    text-decoration: none;
    font-family: var(--font);
    transition: color 0.18s ease;
-   margin-left: auto;
-   align-self: flex-end; /* align Instagram link to bottom of footer */
+   margin-left: 0.25rem;
+   align-self: flex-end; /* always align Instagram to bottom of footer */
    margin-bottom: 0.15rem; /* small offset so it doesn't touch the edge */
 }
 
@@ -683,10 +684,15 @@ p {
 .footer-social {
    display: flex;
    flex-direction: column;
-   align-items: flex-end; /* align both credit and link to the right */
-   margin-left: auto; /* push to far right */
-   gap: 0.15rem;
-   align-self: flex-end; /* keep block aligned to bottom of footer */
+   justify-content: space-between; /* put credit at top and instagram at bottom */
+   align-items: flex-end; /* right-align contents */
+   margin-left: auto; /* push block to the far right */
+   gap: 0.25rem;
+   align-self: stretch; /* let it fill footer height */
+   height: 100%;
+   box-sizing: border-box;
+   padding-top: 0.05rem;
+   padding-bottom: 0.05rem;
 }
 
 .footer-credit {

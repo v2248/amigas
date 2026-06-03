@@ -87,7 +87,7 @@ body#consejos-body .category-select {
     color: #ea5c1c;
     border: none;
     outline: none;
-    padding: 0.35rem 0.45rem 0.35rem 0.5rem; /* reduce right padding to be more compact */
+    padding: 0.25rem 0.35rem 0.25rem 0.45rem; /* tighter horizontal padding */
     font-family: "ABC", sans-serif;
     font-size: 1rem;
     line-height: 1;
@@ -98,15 +98,16 @@ body#consejos-body .category-select {
     appearance: none;
     width: auto;
     min-width: 0;
-    max-width: none;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
     display: inline-block;
     white-space: nowrap;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 10 6'><path d='M0 0 L5 6 L10 0 Z' fill='%23ea5c1c'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='7' height='4' viewBox='0 0 10 6'><path d='M0 0 L5 6 L10 0 Z' fill='%23ea5c1c'/></svg>");
     background-repeat: no-repeat;
-    background-position: right 0.35rem center; /* arrow very close to text */
-    background-size: 8px 5px;
+    background-position: right 0.2rem center; /* arrow very close to text */
+    background-size: 7px 4px;
     box-sizing: border-box;
-    padding-right: 0.9rem; /* ensure small hit area for arrow but keep compact */
+    padding-right: 0.45rem; /* minimal space for arrow hit area */
 }
 
 body#consejos-body .category-select:focus {
