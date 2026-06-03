@@ -34,13 +34,19 @@
                 </fieldset>
 
                 <fieldset>
-                    <label for="categoria">Categoría:</label>
-                    <select id="categoria" name="categoria">
-                        <option value="rutas">Rutas</option>
-                        <option value="vestimenta">Vestimenta</option>
-                        <option value="vagones">Vagones</option>
-                    </select>
-                    <button type="submit">Enviar</button>
+                    <div class="form-actions-row">
+                        <div class="categoria-left">
+                            <label for="categoria">Categoría:</label>
+                            <select id="categoria" name="categoria">
+                                <option value="rutas">Rutas</option>
+                                <option value="vestimenta">Vestimenta</option>
+                                <option value="vagones">Vagones</option>
+                            </select>
+                        </div>
+                        <div class="submit-right">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </div>
                 </fieldset>
                 
             </form>
@@ -50,11 +56,13 @@
             
                 <h4 class="consejos-otras-title type-hover">Consejos de otras amigas</h4>
 
-            <nav class="consejos-otras-options">
-                <a href="#rutas" class="filter-link" data-category="rutas">Rutas</a>
-                <a href="#vestimenta" class="filter-link" data-category="vestimenta">Vestimenta</a>
-                <a href="#vagones" class="filter-link" data-category="vagones">Vagones</a>
-            </nav>
+            <div class="consejos-filter-wrapper">
+                <nav class="consejos-otras-options consejos-filter-bar">
+                    <a href="#rutas" class="filter-link" data-category="rutas">Rutas</a>
+                    <a href="#vestimenta" class="filter-link" data-category="vestimenta">Vestimenta</a>
+                    <a href="#vagones" class="filter-link" data-category="vagones">Vagones</a>
+                </nav>
+            </div>
         <section>
             
         </section>
