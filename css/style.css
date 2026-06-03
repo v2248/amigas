@@ -607,18 +607,19 @@ p {
    margin: 0;
 }
 
+
 /* Footer styling for internal pages */
 #site-footer {
    background-color: #ea5c1c;
    width: 100%;
    margin-top: 2rem;
-   padding: 0.8rem 1rem;
+   padding: 0.9rem 1rem; /* symmetric vertical padding for balance */
    box-sizing: border-box;
 }
 
 #site-footer .footer-content {
    display: flex;
-   align-items: center;
+   align-items: center; /* center children vertically */
    gap: 3rem;
    width: 100%;
    box-sizing: border-box;
@@ -634,7 +635,9 @@ p {
    margin-left: 20px;
    white-space: nowrap;
    flex-shrink: 0;
-   line-height: 0.9;
+   line-height: 1; /* ensure baseline doesn't push content */
+   display: inline-flex;
+   align-items: center;
 }
 
 #site-footer .footer-home-link:hover {
@@ -646,6 +649,7 @@ p {
    display: flex;
    flex-direction: column;
    gap: 0.2rem;
+   justify-content: center; /* center menu items vertically */
 }
 
 #site-footer .footer-menu-link {
@@ -671,8 +675,26 @@ p {
    font-family: var(--font);
    transition: color 0.18s ease;
    margin-left: auto;
-   align-self: flex-end;
-   margin-bottom: -0.5rem;
+   align-self: flex-end; /* align Instagram link to bottom of footer */
+   margin-bottom: 0.15rem; /* small offset so it doesn't touch the edge */
+}
+
+/* Footer social block: credit above Instagram link */
+.footer-social {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end; /* align both credit and link to the right */
+   margin-left: auto; /* push to far right */
+   gap: 0.15rem;
+   align-self: flex-end; /* keep block aligned to bottom of footer */
+}
+
+.footer-credit {
+   font-weight: 700;
+   color: var(--background-color);
+   font-family: var(--font);
+   font-size: 1rem;
+   line-height: 1;
 }
 
 #site-footer .footer-instagram:hover {

@@ -81,24 +81,32 @@ label {
     color: var(--bg-color);
 }
 
-/* Style the category select inside the consejos form only */
+/* Style the category select inside the consejos form only (compact) */
 body#consejos-body .category-select {
     background-color: #312515;
     color: #ea5c1c;
     border: none;
     outline: none;
-    padding: 0.5rem 2.2rem 0.5rem 0.6rem;
+    padding: 0.35rem 0.45rem 0.35rem 0.5rem; /* reduce right padding to be more compact */
     font-family: "ABC", sans-serif;
     font-size: 1rem;
+    line-height: 1;
     border-radius: 0;
     box-shadow: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M0 0 L5 6 L10 0 Z' fill='%23ea5c1c'/></svg>");
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    display: inline-block;
+    white-space: nowrap;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 10 6'><path d='M0 0 L5 6 L10 0 Z' fill='%23ea5c1c'/></svg>");
     background-repeat: no-repeat;
-    background-position: right 0.5rem center;
-    background-size: 10px 6px;
+    background-position: right 0.35rem center; /* arrow very close to text */
+    background-size: 8px 5px;
+    box-sizing: border-box;
+    padding-right: 0.9rem; /* ensure small hit area for arrow but keep compact */
 }
 
 body#consejos-body .category-select:focus {
