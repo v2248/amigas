@@ -91,6 +91,7 @@ header {
 }
 #header-home p {
    margin: 0;
+   margin-top: 1rem;
    font-size: 1rem;
    line-height: 1.1;
    width: 100%;
@@ -111,7 +112,7 @@ h1 {
    text-align: center;
    color: var(--background-color);
    position: relative;
-   margin: 0;
+   margin: -3rem 0 0 0;
    font-size: 24vw;
 }
 
@@ -129,7 +130,7 @@ nav {
    float: right;
 }
 nav#nav-home {
-   margin-top: 1em;
+   margin-top: -0.2rem;
    width: 100%;
    display: flex;
    flex-direction: row;
@@ -208,9 +209,9 @@ a#home-link:hover {
 
 /* Stronger selector for Home subtitle to override #header-home p specificity */
 #header-home .home-subtitle {
-   font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+   font-size: clamp(0.95rem, 1.8vw, 1.1rem);
    line-height: 1.05;
-   margin: 0 0 0.12rem 0;
+   margin: 3.5rem 0 0.12rem 0;
    text-align: center;
    white-space: nowrap;
    display: block;
@@ -218,7 +219,13 @@ a#home-link:hover {
 
 /* Highlight specific words in the Home subtitle */
 #header-home .home-subtitle .home-highlight {
-   color: var(--accent-color);
+   color: #bacf18;
+   transition: color 0.3s ease;
+   cursor: pointer;
+}
+
+#header-home .home-subtitle .home-highlight:hover {
+   color: #312515;
 }
 
 /* Center main title on consejos page */
@@ -263,7 +270,32 @@ body#consejos-body .consejos-box fieldset {
 }
 
 body#consejos-body .consejos-box fieldset:first-of-type {
-   padding: 1.2rem 0 1rem;
+   padding: 1.2rem 0 0;
+}
+
+body#consejos-body .consejos-box {
+   border: none !important;
+   padding: 0;
+}
+
+body#consejos-body .consejos-box textarea,
+body#consejos-body .consejos-box #consejo {
+   margin: 0;
+   display: block;
+}
+
+body#consejos-body .consejos-box .form-actions-row {
+   width: 100%;
+   margin: 0;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 1rem;
+   box-sizing: border-box;
+   background-color: #ea5c1c;
+   color: #312515;
+   padding: 1rem 1rem;
+   border-radius: 0;
 }
 
 /* Make the textarea in consejos bigger and more comfortable to write in */
@@ -438,8 +470,8 @@ body#consejos-body .consejos-box {
 }
 
 body#consejos-body .consejos-box .form-actions-row {
-   width: calc(100% + 2px);
-   margin: 0 -1px -1px;
+   width: 100%;
+   margin: 0;
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -573,4 +605,97 @@ p {
    background-color: transparent;
    padding: 0;
    margin: 0;
-}  
+}
+
+/* Footer styling for internal pages */
+#site-footer {
+   background-color: #ea5c1c;
+   width: 100%;
+   margin-top: 2rem;
+   padding: 0.8rem 1rem;
+   box-sizing: border-box;
+}
+
+#site-footer .footer-content {
+   display: flex;
+   align-items: center;
+   gap: 3rem;
+   width: 100%;
+   box-sizing: border-box;
+}
+
+#site-footer .footer-home-link {
+   color: var(--background-color);
+   font-size: 5rem;
+   font-family: var(--font-title);
+   text-transform: uppercase;
+   text-decoration: none;
+   transition: color 0.18s ease;
+   margin-left: 20px;
+   white-space: nowrap;
+   flex-shrink: 0;
+   line-height: 0.9;
+}
+
+#site-footer .footer-home-link:hover {
+   color: var(--accent-color);
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+#site-footer .footer-menu {
+   display: flex;
+   flex-direction: column;
+   gap: 0.2rem;
+}
+
+#site-footer .footer-menu-link {
+   color: #312515;
+   font-size: 2.2rem;
+   text-decoration: none;
+   font-family: var(--font-title);
+   text-transform: uppercase;
+   transition: color 0.18s ease;
+   line-height: 1;
+   margin: 0;
+}
+
+#site-footer .footer-menu-link:hover {
+   color: #bacf18;
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+#site-footer .footer-instagram {
+   color: var(--background-color);
+   font-size: 1.2rem;
+   text-decoration: none;
+   font-family: var(--font);
+   transition: color 0.18s ease;
+   margin-left: auto;
+   align-self: flex-end;
+   margin-bottom: -0.5rem;
+}
+
+#site-footer .footer-instagram:hover {
+   color: var(--accent-color);
+}
+
+/* Rutas-specific: reduce large gap before footer */
+body#rutas-body main {
+   min-height: auto !important;
+   margin-bottom: 0 !important;
+   padding-bottom: 0 !important;
+}
+
+body#rutas-body #site-footer {
+   margin-top: 0 !important;
+   padding-top: 0.4rem !important;
+   padding-bottom: 0.4rem !important;
+}
+
+/* Consistent spacing between page content and footer for internal pages */
+body#consejos-body main,
+body#rutas-body main,
+body#nosotras-body main {
+   padding-bottom: 4.5rem; /* comfortable gap before footer */
+   box-sizing: border-box;
+}

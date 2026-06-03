@@ -80,3 +80,34 @@ label {
     font-size: 1.5rem;
     color: var(--bg-color);
 }
+
+/* Style the category select inside the consejos form only */
+body#consejos-body .category-select {
+    background-color: #312515;
+    color: #ea5c1c;
+    border: none;
+    outline: none;
+    padding: 0.5rem 2.2rem 0.5rem 0.6rem;
+    font-family: "ABC", sans-serif;
+    font-size: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M0 0 L5 6 L10 0 Z' fill='%23ea5c1c'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 10px 6px;
+}
+
+body#consejos-body .category-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(49,37,21,0.12);
+}
+
+/* Try to style the option items to match where supported */
+body#consejos-body .category-select option {
+    background-color: #312515;
+    color: #ea5c1c;
+}
