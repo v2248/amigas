@@ -34,6 +34,21 @@ button  :hover {
     color: #fff;
 }
 
+body#consejos-body .consejos-box button[type="submit"] {
+    background: #312515;
+    color: #ea5c1c;
+    border: none;
+    outline: none;
+    padding: 10px 18px;
+    font-family: "ABC", sans-serif;
+}
+
+body#consejos-body .consejos-box button[type="submit"]:hover,
+body#consejos-body .consejos-box button[type="submit"]:focus-visible {
+    background-color: #ea5c1c;
+    color: #312515;
+}
+
 #consejos ul {
     list-style-type: none;
     padding: 0;
