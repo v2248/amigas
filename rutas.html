@@ -16,8 +16,61 @@
         </nav>
     </header>
     <main>
-            <h2 class="type-hover">Rutas</h2>
+        <h2 class="type-hover">Rutas</h2>
+        <div class="consejos-filter-wrapper">
+            <nav class="consejos-otras-options consejos-filter-bar">
+                <a href="#escuelas" class="filter-link">Escuelas</a>
+                <a href="#zonas-de-riesgo" class="filter-link">Zonas de riesgo</a>
+                <a href="#museos" class="filter-link">Museos</a>
+                <a href="#cafeterias" class="filter-link">Cafeterías</a>
+            </nav>
+        </div>
+        <section id="escuelas" class="tab-panel">
+            <h3>Escuelas</h3>
+            <p>Encuentra rutas cercanas a escuelas y opciones seguras para llegar.</p>
+        </section>
+        <section id="zonas-de-riesgo" class="tab-panel">
+            <h3>Zonas de riesgo</h3>
+            <p>Identifica las áreas que es mejor evitar y qué rutas tomar con precaución.</p>
+        </section>
+        <section id="museos" class="tab-panel">
+            <h3>Museos</h3>
+            <p>Revisa rutas hacia museos y espacios culturales recomendados.</p>
+        </section>
+        <section id="cafeterias" class="tab-panel">
+            <h3>Cafeterías</h3>
+            <p>Consulta rutas hacia cafeterías amigas y puntos de encuentro seguros.</p>
+        </section>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.consejos-otras-options .filter-link');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            function clearActive() {
+                tabs.forEach(tab => tab.classList.remove('active'));
+                panels.forEach(panel => panel.classList.remove('active'));
+            }
+
+            function showPanel(id) {
+                clearActive();
+                const targetTab = document.querySelector(`.consejos-otras-options .filter-link[href="#${id}"]`);
+                const targetPanel = document.getElementById(id);
+                if (!targetTab || !targetPanel) return;
+                targetTab.classList.add('active');
+                targetPanel.classList.add('active');
+                history.replaceState(null, '', `#${id}`);
+                targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    showPanel(this.getAttribute('href').substring(1));
+                });
+            });
+        });
+    </script>
     <footer id="site-footer">
         <div class="footer-content">
             <a href="./" class="footer-home-link accent-hover">Amigas</a>

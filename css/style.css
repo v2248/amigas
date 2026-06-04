@@ -366,6 +366,59 @@ body#consejos-body .consejos-otras-options {
     border-radius: 0; /* use sharp corners as requested */
 }
 
+/* Shared internal nav style for consejos and rutas pages */
+.consejos-filter-wrapper {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 8px;
+}
+
+.consejos-filter-bar {
+   width: max-content;
+}
+
+.consejos-otras-options {
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem;
+   text-align: center;
+   margin: 0;
+   background: var(--blue);
+   padding: 0.6rem 1.2rem;
+   border-radius: 0;
+}
+
+.consejos-otras-options a {
+   color: #312515;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 2.8rem;
+   line-height: 1;
+}
+
+.consejos-otras-options a:hover {
+   color: var(--text-color);
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+.consejos-otras-options a.active {
+   color: var(--text-color) !important;
+   text-decoration: underline;
+   font-weight: 400 !important;
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+.tab-panel {
+   display: none;
+}
+
+.tab-panel.active {
+   display: block;
+}
+
 /* Wrapper to ensure the filter bar is perfectly centered in the page */
 body#consejos-body .consejos-filter-wrapper {
    width: 100%;
@@ -382,21 +435,25 @@ body#consejos-body .consejos-filter-bar {
 
 /* Responsive tweaks for the consejos options bar */
 @media (max-width: 700px) {
-   body#consejos-body .consejos-otras-options {
+   body#consejos-body .consejos-otras-options,
+   .consejos-otras-options {
       padding: 0.4rem 0.8rem;
       gap: 1rem;
    }
-   body#consejos-body .consejos-otras-options a {
+   body#consejos-body .consejos-otras-options a,
+   .consejos-otras-options a {
       font-size: 1.6rem;
    }
 }
 
 @media (max-width: 420px) {
-   body#consejos-body .consejos-otras-options {
+   body#consejos-body .consejos-otras-options,
+   .consejos-otras-options {
       padding: 0.3rem 0.6rem;
       gap: 0.6rem;
    }
-   body#consejos-body .consejos-otras-options a {
+   body#consejos-body .consejos-otras-options a,
+   .consejos-otras-options a {
       font-size: 1.4rem;
    }
 }
@@ -573,11 +630,26 @@ body#rutas-body #home-link.accent-hover:hover {
    color: #bacf18;
    font-variant-ligatures: discretionary-ligatures;
 }
+body#rutas-body section,
+body#rutas-body .consejos-otras-options,
+body#rutas-body .consejos-filter-wrapper,
+body#rutas-body #site-footer,
+body#rutas-body .footer-content,
+body#rutas-body .footer-menu,
+body#rutas-body .footer-home-link,
+body#rutas-body .footer-menu-link,
+body#rutas-body .footer-instagram {
+   border-radius: 0 !important;
+}
 section {
    padding: 3em;
    margin: 3em;
    background-color: var(--blue);
    border-radius: 10px;
+}
+
+body#rutas-body section {
+   border-radius: 0 !important;
 }
 
 article
