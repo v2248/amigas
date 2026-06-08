@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuLinks = document.querySelectorAll('.rutas-menu a');
   const lista = document.getElementById('lista-lugares');
   const listaTitulo = document.getElementById('lista-titulo');
+  const listaWrapper = document.getElementById('lista-lugares-wrapper');
 
   let currentMarkers = [];
 
@@ -93,7 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
   async function loadCategory(cat) {
     clearMarkers();
     lista.innerHTML = '';
-    if (!DATA_FILES[cat]) return; // no data for this category
+    if (!DATA_FILES[cat]) {
+      if (listaWrapper) listaWrapper.style.display = 'none';
+      return; // no data for this category
+    }
 
     try {
       const path = encodeURI(DATA_FILES[cat]);
@@ -115,7 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      if (features.length === 0) return;
+      if (features.length === 0) {
+        if (listaWrapper) listaWrapper.style.display = 'none';
+        return;
+      }
 
       // add markers
       features.forEach(f => {
@@ -146,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // build list (3-column layout)
       const displayName = cat === 'museos' ? 'MUSEOS' : cat === 'cafeterias' ? 'CAFETERÍAS' : '';
       renderLista(currentMarkers, displayName);
+      if (listaWrapper) listaWrapper.style.display = 'block';
 
     } catch (err) {
       console.error(err);
@@ -170,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // ESCUELAS or ZONAS DE RIESGO: clear markers/list but keep UI active
         clearMarkers();
         lista.innerHTML = '';
+        if (listaWrapper) listaWrapper.style.display = 'none';
       }
     });
   });
