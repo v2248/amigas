@@ -360,15 +360,15 @@ body#consejos-body .consejos-otras-title {
 }
 body#consejos-body .consejos-otras-options {
    /* centered horizontal bar just under the title */
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    text-align: center;
-    margin: 0;
-    background: var(--blue);
-    padding: 0.6rem 1.2rem;
-    border-radius: 0; /* use sharp corners as requested */
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem;
+   text-align: center;
+   margin: 0;
+   background-color: #bacf18;
+   padding: 0.6rem 1.2rem;
+   border-radius: 0; /* use sharp corners as requested */
 }
 
 /* Shared internal nav style for consejos and rutas pages */
@@ -391,7 +391,7 @@ body#consejos-body .consejos-otras-options {
    gap: 2rem;
    text-align: center;
    margin: 0;
-   background: var(--blue);
+   background-color: #bacf18;
    padding: 0.6rem 1.2rem;
    border-radius: 0;
 }
@@ -761,15 +761,15 @@ p {
 .footer-social {
    display: flex;
    flex-direction: column;
-   justify-content: space-between; /* put credit at top and instagram at bottom */
-   align-items: flex-end; /* right-align contents */
+   align-items: flex-end;
+   justify-content: space-between;
    margin-left: auto; /* push block to the far right */
    gap: 0.25rem;
    align-self: stretch; /* let it fill footer height */
    height: 100%;
    box-sizing: border-box;
-   padding-top: 0.05rem;
-   padding-bottom: 0.05rem;
+   padding-top: 0;
+   padding-bottom: 0;
 }
 
 .footer-credit {
@@ -780,8 +780,18 @@ p {
    line-height: 1;
 }
 
+.footer-credit {
+   margin-top: 20px;
+}
+
 #site-footer .footer-instagram:hover {
    color: var(--accent-color);
+}
+
+.footer-instagram {
+   margin-top: auto;
+   margin-bottom: 20px;
+   align-self: flex-end;
 }
 
 /* Rutas-specific: reduce large gap before footer */
@@ -877,6 +887,15 @@ body#nosotras-body main {
    text-align: center;
    font-size: clamp(20px, 1.5vw, 26px);
    line-height: 1.5;
+}
+
+.rutas-intro span.highlight {
+   color: #9ed2bc;
+}
+
+.intro-pregunta {
+  display: block;
+  margin-bottom: 28px;
 }
 
 
