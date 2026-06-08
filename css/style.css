@@ -36,6 +36,11 @@ body {
    padding: 0;
    margin: 0;
 }
+html, body {
+   width: 100%;
+   max-width: 100%;
+   overflow-x: hidden;
+}
 body#nosotras-body {
    background-color: var(--background-color);
    color: var(--text-color);
@@ -798,4 +803,116 @@ body#rutas-body main,
 body#nosotras-body main {
    padding-bottom: 4.5rem; /* comfortable gap before footer */
    box-sizing: border-box;
+}
+
+/* Map container: ensure visible size on Rutas page */
+/* Rutas section & menu layout */
+.rutas-section {
+   width: 100%;
+   max-width: 100%;
+   overflow-x: hidden;
+   margin: 0;
+   padding-left: 0;
+   padding-right: 0;
+   box-sizing: border-box;
+   background-color: #312515;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 0 0 80px 0;
+}
+
+.rutas-menu {
+   width: 100%;
+   margin: 0;
+   padding: 28px 40px;
+   box-sizing: border-box;
+   background-color: #9ed2bc;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   gap: 40px;
+   overflow: visible;
+}
+
+.rutas-menu a {
+   font-size: clamp(28px, 3vw, 52px);
+   line-height: 1;
+   white-space: nowrap;
+   color: #312515;
+   text-decoration: none;
+}
+
+.rutas-menu a:hover {
+   color: var(--text-color);
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+.rutas-menu a.active {
+   color: var(--text-color);
+   text-decoration: underline;
+   font-variant-ligatures: discretionary-ligatures;
+}
+
+#lista-lugares ul li:hover {
+   background: rgba(0,0,0,0.03);
+}
+
+#mapa {
+   width: 90%;
+   max-width: 1100px;
+   height: 500px;
+   margin: 40px auto 0 auto;
+   display: block;
+   position: relative;
+}
+
+/* Lista de lugares: wrapper, título y columnas */
+#lista-lugares-wrapper {
+   width: 90%;
+   max-width: 1100px;
+   margin: 32px auto 80px auto;
+}
+
+#lista-titulo {
+   background-color: #9ed2bc;
+   color: #312515;
+   border-radius: 0;
+   padding: 18px 28px;
+   margin-bottom: 18px;
+   font-size: clamp(28px, 3vw, 48px);
+   line-height: 1;
+}
+
+#lista-lugares {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 18px;
+}
+
+.lista-columna {
+   background-color: #9ed2bc;
+   border-radius: 0;
+   padding: 22px;
+   min-height: 160px;
+}
+
+.lugar-item {
+   display: block;
+   cursor: pointer;
+   color: #312515;
+   font-size: 18px;
+   line-height: 1.2;
+   margin-bottom: 14px;
+   text-decoration: none;
+   background: transparent;
+   border: none;
+   text-align: left;
+   padding: 0;
+   font-family: var(--font);
+}
+
+.lugar-item:hover {
+   color: #ea5c1c;
+   text-decoration: underline;
 }

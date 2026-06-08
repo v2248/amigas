@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
@@ -16,15 +17,22 @@
         </nav>
     </header>
     <main>
-        <h2 class="type-hover">Rutas</h2>
-        <div class="consejos-filter-wrapper">
-            <nav class="consejos-otras-options consejos-filter-bar">
-                <a href="#escuelas" class="filter-link">Escuelas</a>
-                <a href="#zonas-de-riesgo" class="filter-link">Zonas de riesgo</a>
-                <a href="#museos" class="filter-link">Museos</a>
-                <a href="#cafeterias" class="filter-link">Cafeterías</a>
-            </nav>
-        </div>
+                <h2 class="type-hover">Rutas</h2>
+
+                <section class="rutas-section">
+                    <nav class="rutas-menu">
+                        <a href="#escuelas">ESCUELAS</a>
+                        <a href="#zonas-de-riesgo">ZONAS DE RIESGO</a>
+                        <a href="#museos">MUSEOS</a>
+                        <a href="#cafeterias">CAFETERÍAS</a>
+                    </nav>
+
+                                        <div id="mapa"></div>
+                                        <div id="lista-lugares-wrapper">
+                                            <div id="lista-titulo"></div>
+                                            <div id="lista-lugares"></div>
+                                        </div>
+                </section>
         <section id="escuelas" class="tab-panel">
             <h3>Escuelas</h3>
             <p>Encuentra rutas cercanas a escuelas y opciones seguras para llegar.</p>
@@ -85,5 +93,8 @@
             </div>
         </div>
     </footer>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+    <script src="./js/secrets.js"></script>
+    <script src="./js/mapa-rutas.js"></script>
 </body>
 </html>
