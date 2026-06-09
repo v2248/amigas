@@ -118,8 +118,12 @@ document.addEventListener('DOMContentLoaded', function () {
           feedback.style.display = 'block';
         }
         form.reset();
+        form.style.display = 'none'; // Ocultamos el formulario tras publicar
+        
+        // Añadimos el tip virtualmente al inicio de la lista y renderizamos
+        allTips.unshift({ category, content });
         activeFilter = category;
-        await fetchTips();
+        renderList();
       } else {
         if (feedback) {
           feedback.textContent = `Error al guardar (Status: ${res.status})`;
