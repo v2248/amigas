@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('.consejos-box');
-  const textarea = document.getElementById('consejo-inputf');
+  const textarea = document.getElementById('consejo-input');
   const select = document.getElementById('categoria');
   const list = document.getElementById('consejos-list');
   const filterLinks = Array.from(document.querySelectorAll('.consejos-otras-options .filter-link'));
@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   async function fetchTips() {
     try {
-      const res = await fetch(API_URL, {
+      // Usamos un parámetro de timestamp para evitar el caché en lugar de alterar los headers
+      const res = await fetch(`${API_URL}?t=${Date.now()}`, {
         headers: {
           'Accept': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
