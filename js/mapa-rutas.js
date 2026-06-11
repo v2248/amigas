@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Paths to CSV files (use encodeURI when fetching).
   // Keys match the menu link ids (the part after '#' in rutas.html).
   const DATA_FILES = {
-    'escuelas': './data/escuelas_cdmx_coordenadas.xlsx - Escuelas_CDMX.csv',
-    'zonas-de-riesgo': './data/zonas_de_riesgo_cdmx_coordenadas.xlsx - Zonas_de_Riesgo_CDMX.csv',
+    'escuelas': './data/escuelas_principales_cdmx.csv',
+    'zonas-de-riesgo': './data/50_zonas_riesgo_cdmx_coordenadas.csv',
     'museos': './data/museos_cdmx_coordenadas.xlsx - Museos_CDMX.csv',
     'cafeterias': './data/cafeterias_cdmx_coordenadas.xlsx - Cafeterias_CDMX.csv'
   };
@@ -119,10 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const features = [];
       rows.forEach(r => {
-        // support headers named Nombre/Latitud/Longitud (case-insensitive)
-        const nombre = r.nombre || r.Nombre || r.Nombre || r.Nombre || r.Nombre || r['nombre'];
-        const latStr = r.latitud || r.Latitud || r.Lat || r['latitud'];
-        const lonStr = r.longitud || r.Longitud || r.Lon || r['longitud'];
+        // headers are lowercased in parseCSV; support Nombre/Plantel/Lugar as the name column
+        const nombre = r.nombre || r.plantel || r.lugar || r.name;
+        const latStr = r.latitud || r.lat;
+        const lonStr = r.longitud || r.lon || r.lng;
         const lat = toNumberCoord(latStr);
         const lon = toNumberCoord(lonStr);
         if (isFinite(lat) && isFinite(lon)) {
