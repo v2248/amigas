@@ -63,8 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
     return parseFloat(str.replace(/\s/g, '').replace(',', '.'));
   }
 
+  // Build a Google Maps search URL: use lat,lon when available, else the name.
+  function buildGoogleMapsUrl(f) {
+    const base = 'https://www.google.com/maps/search/?api=1&query=';
+    if (f && isFinite(f.lat) && isFinite(f.lon)) {
+      return base + encodeURIComponent(f.lat + ',' + f.lon);
+    }
+    return base + encodeURIComponent((f && f.nombre) ? f.nombre : '');
+  }
+
+  function openInGoogleMaps(url) {
+    if (url) window.open(url, '_blank', 'noopener');
+  }
+
   function renderLista(lugaresArray, categoriaNombre) {
-    // lugaresArray: array of currentMarkers entries ({ marker, popup, lngLat, nombre })
+    // lugaresArray: array of currentMarkers entries ({ marker, lngLat, nombre, gmapsUrl })
     listaTitulo.textContent = (categoriaNombre || '') + (categoriaNombre ? ':' : '');
     lista.innerHTML = '';
 
@@ -91,8 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('click', () => {
           const m = currentMarkers[obj.index];
           if (!m) return;
-          map.flyTo({ center: m.lngLat, zoom: 15 });
-          if (m.popup) m.popup.addTo(map);
+          openInGoogleMaps(m.gmapsUrl);
         });
 
         columnaDiv.appendChild(item);
@@ -146,10 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.boxShadow = '0 0 0 3px rgba(234,92,28,0.12)';
 
         const marker = new mapboxgl.Marker(el).setLngLat([f.lon, f.lat]).addTo(map);
-        const popup = new mapboxgl.Popup({ offset: 12 }).setHTML(`<strong>${f.nombre}</strong>`);
-        marker.getElement().addEventListener('click', () => popup.addTo(map));
+        const gmapsUrl = buildGoogleMapsUrl(f);
+        const markerEl = marker.getElement();
+        markerEl.style.cursor = 'pointer';
+        markerEl.addEventListener('click', () => openInGoogleMaps(gmapsUrl));
 
-        currentMarkers.push({ marker, popup, lngLat: [f.lon, f.lat], nombre: f.nombre });
+        currentMarkers.push({ marker, lngLat: [f.lon, f.lat], nombre: f.nombre, gmapsUrl });
       });
 
       // adjust viewport to markers
