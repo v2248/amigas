@@ -11,10 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     zoom: 11
   });
 
-  // Paths to CSV files (use encodeURI when fetching)
+  // Paths to CSV files (use encodeURI when fetching).
+  // Keys match the menu link ids (the part after '#' in rutas.html).
   const DATA_FILES = {
-    museos: './data/museos_cdmx_coordenadas.xlsx - Museos_CDMX.csv',
-    cafeterias: './data/cafeterias_cdmx_coordenadas.xlsx - Cafeterias_CDMX.csv'
+    'escuelas': './data/escuelas_principales_cdmx.csv',
+    'zonas-de-riesgo': './data/50_zonas_riesgo_cdmx_coordenadas.csv',
+    'museos': './data/museos_cdmx_coordenadas.xlsx - Museos_CDMX.csv',
+    'cafeterias': './data/cafeterias_cdmx_coordenadas.xlsx - Cafeterias_CDMX.csv'
+  };
+
+  // Display titles shown above the list for each category.
+  const DISPLAY_NAMES = {
+    'escuelas': 'ESCUELAS',
+    'zonas-de-riesgo': 'ZONAS DE RIESGO',
+    'museos': 'MUSEOS',
+    'cafeterias': 'CAFETERÍAS'
   };
 
   const menuLinks = document.querySelectorAll('.rutas-menu a');
@@ -108,10 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const features = [];
       rows.forEach(r => {
-        // support headers named Nombre/Latitud/Longitud (case-insensitive)
-        const nombre = r.nombre || r.Nombre || r.Nombre || r.Nombre || r.Nombre || r['nombre'];
-        const latStr = r.latitud || r.Latitud || r.Lat || r['latitud'];
-        const lonStr = r.longitud || r.Longitud || r.Lon || r['longitud'];
+        // headers are lowercased in parseCSV; support Nombre/Plantel/Lugar as the name column
+        const nombre = r.nombre || r.plantel || r.lugar || r.name;
+        const latStr = r.latitud || r.lat;
+        const lonStr = r.longitud || r.lon || r.lng;
         const lat = toNumberCoord(latStr);
         const lon = toNumberCoord(lonStr);
         if (isFinite(lat) && isFinite(lon)) {
@@ -151,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // build list (3-column layout)
-      const displayName = cat === 'museos' ? 'MUSEOS' : cat === 'cafeterias' ? 'CAFETERÍAS' : '';
+      const displayName = DISPLAY_NAMES[cat] || '';
       renderLista(currentMarkers, displayName);
       if (listaWrapper) listaWrapper.style.display = 'block';
 
@@ -170,16 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const href = link.getAttribute('href') || '';
       const id = href.replace('#', '').toLowerCase();
-      if (id === 'museos') {
-        loadCategory('museos');
-      } else if (id === 'cafeterias') {
-        loadCategory('cafeterias');
-      } else {
-        // ESCUELAS or ZONAS DE RIESGO: clear markers/list but keep UI active
-        clearMarkers();
-        lista.innerHTML = '';
-        if (listaWrapper) listaWrapper.style.display = 'none';
-      }
+      loadCategory(id);
     });
   });
 
