@@ -1,48 +1,47 @@
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('.consejos-box');
-  const textarea = document.getElementById('consejo');
+  const textarea = document.getElementById('consejo-input');
   const select = document.getElementById('categoria');
   const list = document.getElementById('consejos-list');
   const filterLinks = Array.from(document.querySelectorAll('.consejos-otras-options .filter-link'));
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+  const feedback = document.getElementById('feedback');
 
   // ensure list exists
   if (!form || !textarea || !select || !list) return;
 
-  // state: messages per category
-  const messages = {
-    rutas: [],
-    vestimenta: [],
-    vagones: []
-  };
-
-  const STORAGE_KEY = 'amigas_messages_v1';
-
-  function loadMessages() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      const parsed = JSON.parse(raw);
-      // Validate shape
-      if (parsed && typeof parsed === 'object') {
-        messages.rutas = Array.isArray(parsed.rutas) ? parsed.rutas : [];
-        messages.vestimenta = Array.isArray(parsed.vestimenta) ? parsed.vestimenta : [];
-        messages.vagones = Array.isArray(parsed.vagones) ? parsed.vagones : [];
-      }
-    } catch (err) {
-      console.error('Failed to load messages from storage', err);
-    }
-  }
-
-  function saveMessages() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
-    } catch (err) {
-      console.error('Failed to save messages to storage', err);
-    }
-  }
-
-  // set current filter (null = show all)
+  let allTips = [];
   let activeFilter = null;
+  const API_URL = 'https://centro.juanfuent.es/api/tips';
+
+  // Previene inyección de HTML al imprimir contenido de la API
+  function escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/[&<>'"]/g, tag => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+    }[tag] || tag));
+  }
+
+  async function fetchTips() {
+    try {
+      // Usamos un parámetro de timestamp para evitar el caché en lugar de alterar los headers
+      const res = await fetch(`${API_URL}?t=${Date.now()}`, {
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      });
+
+      if (!res.ok) throw new Error(`Status: ${res.status}`);
+      
+      const tips = await res.json();
+      allTips = tips || [];
+      renderList();
+    } catch (err) {
+      console.error('Ocurrió un error al cargar los tips.', err);
+      list.innerHTML = '<li style="grid-column: 1 / -1;"><div class="status-msg error-msg">Ocurrió un error al cargar los consejos.</div></li>';
+    }
+  }
 
   function renderList() {
     // clear current list
@@ -51,51 +50,96 @@ document.addEventListener('DOMContentLoaded', function () {
     // determine items to render
     const cats = activeFilter ? [activeFilter] : ['rutas', 'vestimenta', 'vagones'];
 
-    cats.forEach(cat => {
-      messages[cat].forEach(msg => {
+    const tipsToRender = allTips.filter(tip => cats.includes(tip.category));
+
+    if (tipsToRender.length === 0) {
+      list.innerHTML = '<li style="grid-column: 1 / -1;"><div class="status-msg">No hay consejos publicados aún.</div></li>';
+    } else {
+      tipsToRender.forEach(tip => {
         const li = document.createElement('li');
-        li.className = 'consejo ' + cat;
+        li.className = 'consejo ' + escapeHTML(tip.category);
         const p = document.createElement('p');
-        const strong = document.createElement('strong');
-        strong.textContent = 'Amiga';
-        p.appendChild(strong);
-        p.appendChild(document.createTextNode(': ' + msg));
+        p.innerHTML = `<strong>Amiga</strong>: <br/>${escapeHTML(tip.content)}`;
         li.appendChild(p);
         list.appendChild(li);
       });
-    });
+    }
 
     // update active class on filter links
     filterLinks.forEach(link => {
       const cat = link.dataset.category;
       if (activeFilter === cat) {
-        link.classList.add('active');
-        link.classList.add('type-hover');
+        link.classList.add('active', 'type-hover');
       } else {
-        link.classList.remove('active');
-        link.classList.remove('type-hover');
+        link.classList.remove('active', 'type-hover');
       }
     });
   }
 
   // handle form submit
-  form.addEventListener('submit', function (e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    const text = (textarea.value || '').trim();
-    if (!text) return; // don't add empty
+    if (feedback) {
+      feedback.style.display = 'none';
+      feedback.className = '';
+    }
+    
+    const content = (textarea.value || '').trim();
+    if (content) {
+      feedback.textContent = '';
+    } else {
+      if (feedback) {
+        feedback.textContent = 'Por favor, escribe un consejo.';
+        feedback.classList.add('error');
+        feedback.style.display = 'block';
+      }
+      return;
+    }
+
     const category = select.value || 'rutas';
 
-    // store message in state
-    messages[category].push(text);
-    // persist
-    saveMessages();
+    if (submitBtn) submitBtn.disabled = true;
 
-    // clear textarea
-    textarea.value = '';
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({ tip: { category, content } })
+      });
 
-    // set active filter to the category and render so the message is visible
-    activeFilter = category;
-    renderList();
+      if (res.ok) {
+        if (feedback) {
+          feedback.textContent = '¡Tip guardado exitosamente!';
+          feedback.className = 'success';
+          feedback.style.display = 'block';
+        }
+        form.reset();
+        form.style.display = 'none'; // Ocultamos el formulario tras publicar
+        
+        // Añadimos el tip virtualmente al inicio de la lista y renderizamos
+        allTips.unshift({ category, content });
+        activeFilter = category;
+        renderList();
+      } else {
+        if (feedback) {
+          feedback.textContent = `Error al guardar (Status: ${res.status})`;
+          feedback.className = 'error';
+          feedback.style.display = 'block';
+        }
+      }
+    } catch (err) {
+      if (feedback) {
+        feedback.textContent = 'No se pudo conectar con el servidor.';
+        feedback.className = 'error';
+        feedback.style.display = 'block';
+      }
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
   });
 
   // filter link clicks
@@ -109,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // load persisted messages and render
-  loadMessages();
-  renderList();
+  // load persisted messages from API and render
+  fetchTips();
 });

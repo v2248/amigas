@@ -120,3 +120,11 @@ body#consejos-body .category-select option {
     background-color: #312515;
     color: #ea5c1c;
 }
+
+#feedback.success {
+    color: var(--accent-color);
+}
+
+#feedback.error {
+    color: #ea5c1c;
+}
