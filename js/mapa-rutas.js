@@ -11,10 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     zoom: 11
   });
 
-  // Paths to CSV files (use encodeURI when fetching)
+  // Paths to CSV files (use encodeURI when fetching).
+  // Keys match the menu link ids (the part after '#' in rutas.html).
   const DATA_FILES = {
-    museos: './data/museos_cdmx_coordenadas.xlsx - Museos_CDMX.csv',
-    cafeterias: './data/cafeterias_cdmx_coordenadas.xlsx - Cafeterias_CDMX.csv'
+    'escuelas': './data/escuelas_cdmx_coordenadas.xlsx - Escuelas_CDMX.csv',
+    'zonas-de-riesgo': './data/zonas_de_riesgo_cdmx_coordenadas.xlsx - Zonas_de_Riesgo_CDMX.csv',
+    'museos': './data/museos_cdmx_coordenadas.xlsx - Museos_CDMX.csv',
+    'cafeterias': './data/cafeterias_cdmx_coordenadas.xlsx - Cafeterias_CDMX.csv'
+  };
+
+  // Display titles shown above the list for each category.
+  const DISPLAY_NAMES = {
+    'escuelas': 'ESCUELAS',
+    'zonas-de-riesgo': 'ZONAS DE RIESGO',
+    'museos': 'MUSEOS',
+    'cafeterias': 'CAFETERÍAS'
   };
 
   const menuLinks = document.querySelectorAll('.rutas-menu a');
@@ -151,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // build list (3-column layout)
-      const displayName = cat === 'museos' ? 'MUSEOS' : cat === 'cafeterias' ? 'CAFETERÍAS' : '';
+      const displayName = DISPLAY_NAMES[cat] || '';
       renderLista(currentMarkers, displayName);
       if (listaWrapper) listaWrapper.style.display = 'block';
 
@@ -170,16 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const href = link.getAttribute('href') || '';
       const id = href.replace('#', '').toLowerCase();
-      if (id === 'museos') {
-        loadCategory('museos');
-      } else if (id === 'cafeterias') {
-        loadCategory('cafeterias');
-      } else {
-        // ESCUELAS or ZONAS DE RIESGO: clear markers/list but keep UI active
-        clearMarkers();
-        lista.innerHTML = '';
-        if (listaWrapper) listaWrapper.style.display = 'none';
-      }
+      loadCategory(id);
     });
   });
 
